@@ -10,11 +10,27 @@ st.write("Hello, welcome to my very first app!")
 # Create a text input field where the user can type something
 name = st.text_input("What's your name?")
 
-# If the user has typed something in the input box, display a custom message
-if name:
-    st.write(f"Nice to meet you, {name}!")
+# Add a dropdown menu
+mood = st.selectbox(
+    "How are you feeling today?",
+    ("Happy", "Sad", "Excited", "Tired", "Angry")
+)
 
-# Create a button labeled "Click Me"
-if st.button("Click Me"):
-    # When the button is clicked, display a message
-    st.write("You clicked the button!")
+# Add a Slider
+rating = st.slider("Rate your day from 1-10", 1, 10, 5)  # in this case 5 is where the slider starts
+
+# Add a button
+if st.button("Submit"):
+    st.write(f"Hello {name}! You're feeling {mood} and rated your day today as a {rating}/10.")
+
+# Add an image
+st.image("https://picsum.photos/400/300", caption="Here's a radnom image!")
+
+# Add a Progress bar
+import time
+progress = st.progress(0)
+for i in range(100):
+    time.sleep(0.01)
+    progress.progress(i + 1)
+
+st.success("Done Loading!")  # Adds a green checkmark box
